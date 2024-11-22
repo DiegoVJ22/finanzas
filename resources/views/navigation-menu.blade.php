@@ -26,7 +26,13 @@
                         {{ __('NOF') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('riesgos') }}" :active="request()->routeIs('riesgos')">
-                        {{ __('Ratios') }}
+                        {{ __('Ratios Financieros') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('ratios') }}" :active="request()->routeIs('ratios')">
+                        {{ __('Ratios de Rentabilidad') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('bonos.index') }}" :active="request()->routeIs('bonos')">
+                        {{ __('Bonos') }}
                     </x-nav-link>
                     <x-nav-link href="{{ route('waka-waka.index') }}" :active="request()->routeIs('waka-waka')">
                         {{ __('WACC') }}
