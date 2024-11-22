@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatGPTController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DatosController;
+use App\Http\Controllers\BonosController;
 use App\Http\Controllers\TablaController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,8 @@ Route::middleware([
     // Route::get('/datos', function () {
     //     return view('pages.datos');
     // })->name('datos');
-
+    Route::resource('bonos', BonosController::class);
+    Route::post('/bonos/calcular', [BonosController::class, 'calcular'])->name('bonos.calcular');
     Route::get('/estrategias', function () {
         return view('pages.estrategias');
     })->name('estrategias');
