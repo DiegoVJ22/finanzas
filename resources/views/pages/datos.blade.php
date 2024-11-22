@@ -31,10 +31,15 @@
                     class="p-6 lg:p-8 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 text-white">
                     <!-- Tabla -->
                     <section id="tabla-datos" class="relative overflow-x-auto my-8">
-                        <button onclick="addYear()" class="mb-4 px-4 py-2 bg-blue-500 text-white rounded">Agregar
-                            Año</button>
-                        <button onclick="removeYear()" class="mb-4 px-4 py-2 bg-red-500 text-white rounded">Eliminar
-                            Año</button>
+                        <h2 class="text-3xl font-bold mb-4" style="color: #6875f5;">DATOS FINANCIEROS
+                        </h2>
+                        <div class="flex justify-end gap-2 mb-4">
+                            <button onclick="addYear()" class="mb-4 px-4 py-2 bg-blue-500 text-white rounded">Agregar
+                                Año</button>
+                            <button onclick="removeYear()" class="mb-4 px-4 py-2 bg-red-500 text-white rounded">Eliminar
+                                Año</button>
+                        </div>
+
                         <form id="datosForm" method="POST" action="{{ route('datos.store') }}">
                             @csrf
                             <table
@@ -158,7 +163,8 @@
                                             </td>
                                         @endforeach
                                     </tr>
-                                    <tr class="calculated-row bg-gray-100 dark:bg-gray-900" id="row_utilidad_ejercicio">
+                                    <tr class="calculated-row bg-gray-100 dark:bg-gray-900"
+                                        id="row_utilidad_ejercicio">
                                         <td class="border px-4 py-2 font-bold">Utilidad de Ejercicio</td>
                                         @foreach ($years as $year)
                                             <td class="border px-4 py-2 font-bold"
@@ -733,7 +739,7 @@
                 // Verificar que la diferencia sea cero y balanceado
                 if (!diferenciaElement.innerText.includes('Balanceado')) {
                     valid = false;
-                    message = 'El balance no está balanceado para el año ' + year + '.';
+                    message = 'No hay un balance para el año ' + year + '.';
                     return;
                 }
 
