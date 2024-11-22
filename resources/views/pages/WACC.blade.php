@@ -34,11 +34,11 @@
                         <div class="grid grid-cols-4 grid-rows-5 gap-4">
                             <div class="col-span-2">
                                 <label for="rf" class="text-gray-400 block">Tasa Libre de riesgo</label>
-                                <input type="number" id="rf" name="rf" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                <input type="number" step="0.01" id="rf" name="rf" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                             </div>
                             <div class="col-span-2 col-start-1 row-start-2">
                                 <label for="beta" class="text-gray-400 block">Beta desapalancado</label>
-                                <input type="number" id="beta" name="beta" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                <input type="number" step="0.01" id="beta" name="beta" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                             </div>
                             <div class="col-span-2 col-start-3 row-start-1">
                                 <label for="year" class="text-gray-400 block">Año</label>
@@ -50,13 +50,13 @@
                             </div>
                             <div class="col-span-2 col-start-3 row-start-2">
                                 <label for="rm" class="text-gray-400 block">S&P 500</label>
-                                <input type="number" id="rm" name="rm" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                <input type="number" step="0.01" id="rm" name="rm" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                             </div>
                             <div class="col-span-2 row-start-3">
                                 <div class="grid grid-cols-2 grid-rows-1 gap-4">
                                     <div>
                                         <label for="i1" class="text-gray-400 block">Tasa del Pasivo a CORTO PLAZO</label>
-                                        <input type="number" id="i1" name="i1" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                        <input type="number" step="0.01" id="i1" name="i1" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                                     </div>
                                     <div>
                                         <label for="frecuencia1" class="text-gray-400 block">Frecuencia</label>
@@ -76,11 +76,11 @@
                                 <div class="grid grid-cols-2 grid-rows-1 gap-4">
                                     <div>
                                         <label for="i2" class="text-gray-400 block">Tasa del Pasivo a LARGO PLAZO</label>
-                                        <input type="number" id="i2" name="i2" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                        <input type="number" step="0.01" id="i2" name="i2" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                                     </div>
                                     <div>
                                         <label for="frecuencia2" class="text-gray-400 block">Frecuencia</label>
-                                        <select id="frecuencia2" name="frecuencia1" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                        <select id="frecuencia2" name="frecuencia2" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                                             <option class="bg-gray-800" value="diaria">Diaria</option>
                                             <option class="bg-gray-800" value="semanal">Semanal</option>
                                             <option class="bg-gray-800" value="mensual">Mensual</option>
@@ -94,7 +94,7 @@
                             </div>
                             <div class="col-span-2 row-start-4">
                                 <label for="riesgo-pais" class="text-gray-400 block">Riesgo País</label>
-                                <input type="number" id="riesgo-pais" name="riesgo-pais" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                <input type="number" step="0.01" id="riesgo-pais" name="riesgo-pais" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                             </div>
                             <div class="col-span-2 col-start-3 row-start-4">
                                 <button type="submit" class="mt-6 p-2 bg-indigo-600 text-white rounded w-full">Calcular</button>
@@ -141,6 +141,23 @@
                                     {{-- <td class="border px-4 py-2" rowspan="3">{{$data_year}}</td> --}}
                                     <td class="border px-4 py-2 capitalize">total activo</td>
                                     <td class="border px-4 py-2 capitalize">{{$total_activo}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    @endif
+                    @if(isset($wacc))
+                        <h3 class="text-xl font-semibold pb-4">Resultado</h3>
+                        <table class="w-full mx-auto text-center">
+                            <thead>
+                                <tr class="bg-gray-200 dark:bg-gray-700">
+                                    <th class="border px-4 py-2">Año</th>
+                                    <th class="border px-4 py-2">WACC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border px-4 py-2">{{$data_year}}</td>
+                                    <td class="border px-4 py-2">{{$wacc}}%</td>
                                 </tr>
                             </tbody>
                         </table>
