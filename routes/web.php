@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DatosController;
 use App\Http\Controllers\BonosController;
 use App\Http\Controllers\NofController;
+use App\Http\Controllers\RatioController;
 use App\Http\Controllers\TablaController;
 use App\Http\Controllers\WakaWakaController;
 use App\Models\User;
@@ -48,6 +49,8 @@ Route::middleware([
 
     Route::resource('waka-waka', WakaWakaController::class);
     Route::post('/calcularWACC', [WakaWakaController::class, 'calcularWACC'])->name('wacc.calcular');
+
+    Route::get('/ratios', [RatioController::class, 'index'])->name('ratios');
     
     // Ruta para manejar la consulta a GPT
     Route::post('/ask-gpt', [ChatGPTController::class, 'askGPT'])->name('ask.gpt');

@@ -89,7 +89,7 @@
                                     <td class="border px-4 py-2">Total de pasivos corrientes</td>
                                     <td class="border px-4 py-2">
                                         <input type="number" id="pasivo_corriente" class="
-                                         bg-transparent cuenta-input w-full px-2 py-1 border rounded-md" step="0.01" placeholder="Completa aquí..." required>
+                                        bg-transparent cuenta-input w-full px-2 py-1 border rounded-md" step="0.01" placeholder="Completa aquí..." required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -127,7 +127,7 @@
                                     <td class="border px-4 py-2">Total de activos promedios</td>
                                     <td class="border px-4 py-2">
                                         <input type="number" id="promedio_activos" class="
-                                         bg-transparent cuenta-input w-full px-2 py-1 border rounded-md" step="0.01" placeholder="Completa aquí..." required>
+                                        bg-transparent cuenta-input w-full px-2 py-1 border rounded-md" step="0.01" placeholder="Completa aquí..." required>
                                     </td>
                                 </tr>
                                 <tr>
@@ -142,7 +142,7 @@
                                     <td class="border px-4 py-2">Total del activo fijo neto</td>
                                     <td class="border px-4 py-2">
                                         <input type="number" id="activo_fijo_neto" class="
-                                         bg-transparent cuenta-input w-full px-2 py-1 border rounded-md" step="0.01" placeholder="Completa aquí..." required>
+                                        bg-transparent cuenta-input w-full px-2 py-1 border rounded-md" step="0.01" placeholder="Completa aquí..." required>
                                     </td>
                                 </tr>
 
