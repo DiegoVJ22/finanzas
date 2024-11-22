@@ -144,80 +144,76 @@ class DatosController extends Controller
         }
 
         foreach ($data as $year => $values) {
-            // Validar que no existan registros previos para este año y usuario
-            $existingRecord = EstadoResultado::where('user_id', $user_id)->where('año', $year)->first();
-            if ($existingRecord) {
-                return response()->json(['success' => false, 'message' => 'Ya existen datos para el año ' . $year . '.']);
-            }
             
-            // Guardar Estado de Resultados
-            $estadoResultado = new EstadoResultado([
-                'user_id' => $user_id,
-                'año' => $year,
-                'ventas' => $values['ventas'],
-                'saldo_enero' => $values['saldo_enero'],
-                'compras' => $values['compras'],
-                'saldo_diciembre' => $values['saldo_diciembre'],
-                'gastos_operacionales' => $values['gastos_operacionales'],
-                'gastos_financieros' => $values['gastos_financieros'],
-                'impuesto_renta' => $values['impuesto_renta'],
-            ]);
-            $estadoResultado->save();
+            // Estado de Resultados
+            EstadoResultado::updateOrCreate(
+                ['user_id' => $user_id, 'año' => $year],
+                [
+                    'ventas' => $values['ventas'],
+                    'saldo_enero' => $values['saldo_enero'],
+                    'compras' => $values['compras'],
+                    'saldo_diciembre' => $values['saldo_diciembre'],
+                    'gastos_operacionales' => $values['gastos_operacionales'],
+                    'gastos_financieros' => $values['gastos_financieros'],
+                    'impuesto_renta' => $values['impuesto_renta'],
+                ]
+            );
 
-            // Guardar Activo Corriente
-            $activoCorriente = new ActivoCorriente([
-                'user_id' => $user_id,
-                'año' => $year,
-                'efectivo' => $values['efectivo'],
-                'inversion' => $values['inversiones_financieras'],
-                'cuentas_por_cobrar' => $values['cuentas_por_cobrar'],
-                'mercaderias' => $values['mercaderias'],
-                'servicios' => $values['servicios_pagados'],
-            ]);
-            $activoCorriente->save();
+            // Activo Corriente
+            ActivoCorriente::updateOrCreate(
+                ['user_id' => $user_id, 'año' => $year],
+                [
+                    'efectivo' => $values['efectivo'],
+                    'inversion' => $values['inversiones_financieras'],
+                    'cuentas_por_cobrar' => $values['cuentas_por_cobrar'],
+                    'mercaderias' => $values['mercaderias'],
+                    'servicios' => $values['servicios_pagados'],
+                ]
+            );
 
-            // Guardar Activo No Corriente
-            $activoNoCorriente = new ActivoNoCorriente([
-                'user_id' => $user_id,
-                'año' => $year,
-                'terrenos' => $values['terrenos'],
-                'edificaciones' => $values['edificaciones'],
-                'muebles' => $values['muebles'],
-            ]);
-            $activoNoCorriente->save();
+            // Activo No Corriente
+            ActivoNoCorriente::updateOrCreate(
+                ['user_id' => $user_id, 'año' => $year],
+                [
+                    'terrenos' => $values['terrenos'],
+                    'edificaciones' => $values['edificaciones'],
+                    'muebles' => $values['muebles'],
+                ]
+            );
 
-            // Guardar Pasivo Corriente
-            $pasivoCorriente = new PasivoCorriente([
-                'user_id' => $user_id,
-                'año' => $year,
-                'tributos' => $values['tributos'],
-                'cuentas_por_pagar_comerciales' => $values['cuentas_comerciales'],
-                'obligaciones' => $values['obligaciones'],
-                'cuentas_por_pagar_diversas' => $values['cuentas_diversas'],
-            ]);
-            $pasivoCorriente->save();
+            // Pasivo Corriente
+            PasivoCorriente::updateOrCreate(
+                ['user_id' => $user_id, 'año' => $year],
+                [
+                    'tributos' => $values['tributos'],
+                    'cuentas_por_pagar_comerciales' => $values['cuentas_comerciales'],
+                    'obligaciones' => $values['obligaciones'],
+                    'cuentas_por_pagar_diversas' => $values['cuentas_diversas'],
+                ]
+            );
 
-            // Guardar Pasivo No Corriente
-            $pasivoNoCorriente = new PasivoNoCorriente([
-                'user_id' => $user_id,
-                'año' => $year,
-                'obligaciones_largo_plazo' => $values['obligaciones_largo_plazo'],
-                'otros_pasivos' => $values['otros_pasivos'],
-            ]);
-            $pasivoNoCorriente->save();
+            // Pasivo No Corriente
+            PasivoNoCorriente::updateOrCreate(
+                ['user_id' => $user_id, 'año' => $year],
+                [
+                    'obligaciones_largo_plazo' => $values['obligaciones_largo_plazo'],
+                    'otros_pasivos' => $values['otros_pasivos'],
+                ]
+            );
 
-            // Guardar Patrimonio
-            $patrimonio = new Patrimonio([
-                'user_id' => $user_id,
-                'año' => $year,
-                'capital_social' => $values['capital_social'],
-                'beneficios' => $values['beneficios'],
-                'excedentes' => $values['excedente'],
-                'reservas' => $values['reservas'],
-                'utilidad_ejercicios_ant' => $values['utilidad_anterior'],
-                // 'utilidad_ejercicio' se calcula y guarda en otro lugar si es necesario
-            ]);
-            $patrimonio->save();
+            // Patrimonio
+            Patrimonio::updateOrCreate(
+                ['user_id' => $user_id, 'año' => $year],
+                [
+                    'capital_social' => $values['capital_social'],
+                    'beneficios' => $values['beneficios'],
+                    'excedentes' => $values['excedente'],
+                    'reservas' => $values['reservas'],
+                    'utilidad_ejercicios_ant' => $values['utilidad_anterior'],
+                    // Si deseas guardar 'utilidad_ejercicio', puedes agregarlo aquí
+                ]
+            );
+            
         }
 
         return response()->json(['success' => true, 'message' => 'Datos guardados exitosamente.']);

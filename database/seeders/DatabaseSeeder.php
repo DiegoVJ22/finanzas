@@ -15,13 +15,32 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        User::factory()->create(
+            [
+            'name' => 'Empresa 1',
+            'email' => 'test1@example.com',
+            ]
+        );
+        User::factory()->create(
+            [
+            'name' => 'Empresa 2',
+            'email' => 'test2@example.com',
+            ]
+        );
+        User::factory()->create(
+            [
+            'name' => 'Empresa 3',
+            'email' => 'test3@example.com',
+            ]
+        );
 
         $this->call([
-            RubrosSeeder::class,
-        ]);
+        EstadoResultadoSeeder::class,
+        ActivoCorrienteSeeder::class,
+        ActivoNoCorrienteSeeder::class,
+        PasivoCorrienteSeeder::class,
+        PasivoNoCorrienteSeeder::class,
+        PatrimonioSeeder::class,
+    ]);
     }
 }
