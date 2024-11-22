@@ -27,40 +27,49 @@
     <div class="py-12 animate-fadeInUp">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 text-white">
+                <div
+                    class="p-6 lg:p-8 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 text-white">
                     <h3 class="text-xl font-semibold pb-4">Cálculo del WACC</h3>
                     <form action="{{ route('wacc.calcular') }}" method="POST">
                         @csrf
                         <div class="grid grid-cols-4 grid-rows-5 gap-4">
                             <div class="col-span-2">
                                 <label for="rf" class="text-gray-400 block">Tasa Libre de riesgo</label>
-                                <input type="number" step="0.01" id="rf" name="rf" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                <input type="number" step="0.01" id="rf" name="rf"
+                                    class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                             </div>
                             <div class="col-span-2 col-start-1 row-start-2">
                                 <label for="beta" class="text-gray-400 block">Beta desapalancado</label>
-                                <input type="number" step="0.01" id="beta" name="beta" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                <input type="number" step="0.01" id="beta" name="beta"
+                                    class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                             </div>
                             <div class="col-span-2 col-start-3 row-start-1">
                                 <label for="year" class="text-gray-400 block">Año</label>
-                                <select name="year" id="year" class="w-full bg-transparent p-2 border border-gray-500 rounded">
-                                    @foreach($years as $year)
-                                        <option class="bg-gray-800" value="{{ $year }}">{{ $year }}</option>
+                                <select name="year" id="year"
+                                    class="w-full bg-transparent p-2 border border-gray-500 rounded">
+                                    @foreach ($years as $year)
+                                        <option class="bg-gray-800" value="{{ $year }}">{{ $year }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="col-span-2 col-start-3 row-start-2">
                                 <label for="rm" class="text-gray-400 block">S&P 500</label>
-                                <input type="number" step="0.01" id="rm" name="rm" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                <input type="number" step="0.01" id="rm" name="rm"
+                                    class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                             </div>
                             <div class="col-span-2 row-start-3">
                                 <div class="grid grid-cols-2 grid-rows-1 gap-4">
                                     <div>
-                                        <label for="i1" class="text-gray-400 block">Tasa del Pasivo a CORTO PLAZO</label>
-                                        <input type="number" step="0.01" id="i1" name="i1" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                        <label for="i1" class="text-gray-400 block">Tasa del Pasivo a CORTO
+                                            PLAZO</label>
+                                        <input type="number" step="0.01" id="i1" name="i1"
+                                            class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                                     </div>
                                     <div>
                                         <label for="frecuencia1" class="text-gray-400 block">Frecuencia</label>
-                                        <select id="frecuencia1" name="frecuencia1" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                        <select id="frecuencia1" name="frecuencia1"
+                                            class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                                             <option class="bg-gray-800" value="diaria">Diaria</option>
                                             <option class="bg-gray-800" value="semanal">Semanal</option>
                                             <option class="bg-gray-800" value="mensual">Mensual</option>
@@ -75,12 +84,15 @@
                             <div class="col-span-2 col-start-3 row-start-3">
                                 <div class="grid grid-cols-2 grid-rows-1 gap-4">
                                     <div>
-                                        <label for="i2" class="text-gray-400 block">Tasa del Pasivo a LARGO PLAZO</label>
-                                        <input type="number" step="0.01" id="i2" name="i2" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                        <label for="i2" class="text-gray-400 block">Tasa del Pasivo a LARGO
+                                            PLAZO</label>
+                                        <input type="number" step="0.01" id="i2" name="i2"
+                                            class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                                     </div>
                                     <div>
                                         <label for="frecuencia2" class="text-gray-400 block">Frecuencia</label>
-                                        <select id="frecuencia2" name="frecuencia2" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                        <select id="frecuencia2" name="frecuencia2"
+                                            class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                                             <option class="bg-gray-800" value="diaria">Diaria</option>
                                             <option class="bg-gray-800" value="semanal">Semanal</option>
                                             <option class="bg-gray-800" value="mensual">Mensual</option>
@@ -94,14 +106,16 @@
                             </div>
                             <div class="col-span-2 row-start-4">
                                 <label for="riesgo-pais" class="text-gray-400 block">Riesgo País</label>
-                                <input type="number" step="0.01" id="riesgo-pais" name="riesgo-pais" class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
+                                <input type="number" step="0.01" id="riesgo-pais" name="riesgo-pais"
+                                    class="w-full bg-transparent p-2 border border-gray-500 rounded" required>
                             </div>
                             <div class="col-span-2 col-start-3 row-start-4">
-                                <button type="submit" class="mt-6 p-2 bg-indigo-600 text-white rounded w-full">Calcular</button>
+                                <button type="submit"
+                                    class="mt-6 p-2 bg-indigo-600 text-white rounded w-full">Calcular</button>
                             </div>
                         </div>
                     </form>
-                    @if(isset($total_activo, $total_pasivo_corriente, $total_pasivo_no_corriente))
+                    @if (isset($total_activo, $total_pasivo_corriente, $total_pasivo_no_corriente))
                         <h3 class="text-xl font-semibold pb-4">Resumen de Cuentas contables</h3>
                         <table class="w-full mx-auto text-center">
                             <thead>
@@ -113,40 +127,43 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="border px-4 py-2" rowspan="6">{{$data_year}}</td>
+                                    <td class="border px-4 py-2" rowspan="6">{{ $data_year }}</td>
                                     <td class="border px-4 py-2 capitalize">pasivo corriente</td>
-                                    <td class="border px-4 py-2">{{$total_pasivo_corriente}}</td>
+                                    <td class="border px-4 py-2">{{ $total_pasivo_corriente }}</td>
                                 </tr>
                                 <tr>
                                     {{-- <td class="border px-4 py-2" rowspan="3">{{$data_year}}</td> --}}
                                     <td class="border px-4 py-2 capitalize">pasivo no corriente</td>
-                                    <td class="border px-4 py-2">{{$total_pasivo_no_corriente}}</td>
+                                    <td class="border px-4 py-2">{{ $total_pasivo_no_corriente }}</td>
                                 </tr>
                                 <tr class="bg-gray-900">
                                     {{-- <td class="border px-4 py-2" rowspan="3">{{$data_year}}</td> --}}
                                     <td class="border px-4 py-2 capitalize">total pasivo</td>
-                                    <td class="border px-4 py-2">{{$total_pasivo_no_corriente + $total_pasivo_corriente}}</td>
+                                    <td class="border px-4 py-2">
+                                        {{ $total_pasivo_no_corriente + $total_pasivo_corriente }}</td>
                                 </tr>
                                 <tr>
                                     {{-- <td class="border px-4 py-2" rowspan="3">{{$data_year}}</td> --}}
                                     <td class="border px-4 py-2 capitalize">patrimonio</td>
-                                    <td class="border px-4 py-2 capitalize">{{$total_patrimonio}}</td>
+                                    <td class="border px-4 py-2 capitalize">{{ $total_patrimonio }}</td>
                                 </tr>
                                 <tr class="bg-gray-900">
                                     {{-- <td class="border px-4 py-2" rowspan="3">{{$data_year}}</td> --}}
                                     <td class="border px-4 py-2 capitalize">pasivo y patrimonio</td>
-                                    <td class="border px-4 py-2">{{$total_pasivo_no_corriente + $total_pasivo_corriente + $total_patrimonio}}</td>
+                                    <td class="border px-4 py-2">
+                                        {{ $total_pasivo_no_corriente + $total_pasivo_corriente + $total_patrimonio }}
+                                    </td>
                                 </tr>
                                 <tr>
                                     {{-- <td class="border px-4 py-2" rowspan="3">{{$data_year}}</td> --}}
                                     <td class="border px-4 py-2 capitalize">total activo</td>
-                                    <td class="border px-4 py-2 capitalize">{{$total_activo}}</td>
+                                    <td class="border px-4 py-2 capitalize">{{ $total_activo }}</td>
                                 </tr>
                             </tbody>
                         </table>
                     @endif
-                    @if(isset($wacc))
-                        <h3 class="text-xl font-semibold pb-4">Resultado</h3>
+                    @if (isset($wacc))
+                        <h3 class="text-xl font-semibold pb-4 mt-4">Resultado</h3>
                         <table class="w-full mx-auto text-center">
                             <thead>
                                 <tr class="bg-gray-200 dark:bg-gray-700">
@@ -156,8 +173,8 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="border px-4 py-2">{{$data_year}}</td>
-                                    <td class="border px-4 py-2">{{$wacc}}%</td>
+                                    <td class="border px-4 py-2">{{ $data_year }}</td>
+                                    <td class="border px-4 py-2">{{ $wacc }}%</td>
                                 </tr>
                             </tbody>
                         </table>

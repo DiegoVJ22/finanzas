@@ -31,10 +31,10 @@
                     <x-nav-link href="{{ route('ratios') }}" :active="request()->routeIs('ratios')">
                         {{ __('Ratios de Rentabilidad') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('bonos.index') }}" :active="request()->routeIs('bonos')">
+                    <x-nav-link href="{{ route('bonos.index') }}" :active="request()->routeIs('bonos.index')">
                         {{ __('Bonos') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('waka-waka.index') }}" :active="request()->routeIs('waka-waka')">
+                    <x-nav-link href="{{ route('waka-waka.index') }}" :active="request()->routeIs('waka-waka.index')">
                         {{ __('WACC') }}
                     </x-nav-link>
                 </div>
