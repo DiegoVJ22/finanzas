@@ -28,6 +28,9 @@
                     <x-nav-link href="{{ route('riesgos') }}" :active="request()->routeIs('riesgos')">
                         {{ __('Ratios') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('waka-waka.index') }}" :active="request()->routeIs('waka-waka')">
+                        {{ __('WACC') }}
+                    </x-nav-link>
                 </div>
             </div>
 
